@@ -15,8 +15,6 @@ import java.io.Serializable;
 @Embeddable
 public class StudentCoursePK implements Serializable {
 
-    @Column(name = "student_id")
-    private String studentId;
-    @Column(name = "course_code")
-    private String courseId;
+    private Student student;
+    private Course course;
 }
