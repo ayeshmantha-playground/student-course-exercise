@@ -23,21 +23,25 @@ public class StudentCourse  implements Serializable {
     private Date date;
 
     @ManyToOne
-    @JoinColumn(name = "course_code", referencedColumnName = "code" ,insertable = false, updatable = false)
+    @MapsId("studentId")
+//    @JoinColumn(name = "course_code", referencedColumnName = "code" ,insertable = false, updatable = false)
     private Course course;
 
     @ManyToOne
-    @JoinColumn(name = "student_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @MapsId("courseId")
+//    @JoinColumn(name = "student_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Student student;
 
-    public StudentCourse(StudentCoursePK studentCoursePK, String registeredBy, Date date) {
-        this.studentCoursePK = studentCoursePK;
-        this.registeredBy = registeredBy;
-        this.date = date;
-    }
+//    public StudentCourse(StudentCoursePK studentCoursePK, String registeredBy, Date date) {
+//        this.studentCoursePK = studentCoursePK;
+//        this.registeredBy = registeredBy;
+//        this.date = date;
+//    }
 
     public StudentCourse(Student student,Course course, String registeredBy, Date date) {
         this.studentCoursePK = new StudentCoursePK(student.getId(), course.getCode());
+        this.student = student;
+        this.course = course;
         this.registeredBy = registeredBy;
         this.date = date;
     }
